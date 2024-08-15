@@ -6,7 +6,7 @@ public class Plateau {
     int height;
     int [][] plateau;
 
-    private static Plateau instance;
+    private static Plateau instance = null;
 
     private Plateau(int x, int y) {
         this.width = x;
@@ -16,7 +16,14 @@ public class Plateau {
 
     public static Plateau getInstance(int x, int y) {
         if (instance == null) {
-            return new Plateau(x, y);
+            instance = new Plateau(x, y);
+        }
+        return instance;
+    }
+
+    public static Plateau getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException("Plateau dimensions need to be provided");
         }
         return instance;
     }
