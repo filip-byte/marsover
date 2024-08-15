@@ -3,9 +3,9 @@ package Input;
 public class Position {
     private int x;
     private int y;
-    private Directions facing;
+    private Direction facing;
 
-    public Position(int x, int y, Directions facing) {
+    public Position(int x, int y, Direction facing) {
         this.x = x;
         this.y = y;
         this.facing = facing;
@@ -27,11 +27,11 @@ public class Position {
         this.y = y;
     }
 
-    public Directions getFacing() {
+    public Direction getFacing() {
         return facing;
     }
 
-    public void setFacing(Directions facing) {
+    public void setFacing(Direction facing) {
         this.facing = facing;
     }
 }

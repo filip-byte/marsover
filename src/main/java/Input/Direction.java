@@ -1,6 +1,6 @@
 package Input;
 
-public enum Directions {
+public enum Direction {
     N,
     W,
     S,

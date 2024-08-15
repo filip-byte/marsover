@@ -1,6 +1,6 @@
 package Input;
 
-enum Instruction{
+public enum Instruction{
     L,
     R,
     M
