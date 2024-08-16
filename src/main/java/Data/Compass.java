@@ -6,7 +6,7 @@ import Input.Position;
 
 public class Compass {
 
-    public static Direction rotate (Direction facing, Instruction turn) {
+    public Direction rotate(Direction facing, Instruction turn) {
 
         if (facing == null) {
             throw new IllegalArgumentException("Please provide valid Direction");

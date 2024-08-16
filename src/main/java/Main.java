@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Plateau plateau = Plateau.getInstance(5,5);
+        Plateau plateau = Plateau.getInstance(11,11);
 
         int[][] rover1Position = plateau.getPlateau();
 

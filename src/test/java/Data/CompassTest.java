@@ -13,12 +13,13 @@ class CompassTest {
     @Description("Method returns valid Direction for valid input")
     void rotate() {
 
+        Compass compass = new Compass();
 
         Direction facing = Direction.N;
         Instruction turn = Instruction.L;
         Direction expectedOutput = Direction.W;
 
-        Direction result = Compass.rotate(facing, turn);
+        Direction result = compass.rotate(facing, turn);
 
         assertEquals(expectedOutput, result);
 
@@ -28,10 +29,12 @@ class CompassTest {
     @Description("Method handles invalid input")
     void rotate_invalid_input() {
 
+        Compass compass = new Compass();
+
         Direction facing = Direction.N;
         Instruction turn = Instruction.M;
 
-        assertThrows(IllegalArgumentException.class, () -> Compass.rotate(facing, turn));
+        assertThrows(IllegalArgumentException.class, () -> compass.rotate(facing, turn));
 
     }
 
@@ -39,12 +42,14 @@ class CompassTest {
     @Description("Method handles null input")
     void rotate_null_input() {
 
+        Compass compass = new Compass();
+
         Direction facing = null;
         Instruction turn = null;
 
-        assertThrows(IllegalArgumentException.class, () -> Compass.rotate(Direction.N, turn));
-        assertThrows(IllegalArgumentException.class, () -> Compass.rotate(facing, Instruction.L));
-        assertThrows(IllegalArgumentException.class, () -> Compass.rotate(facing, turn));
+        assertThrows(IllegalArgumentException.class, () -> compass.rotate(Direction.N, turn));
+        assertThrows(IllegalArgumentException.class, () -> compass.rotate(facing, Instruction.L));
+        assertThrows(IllegalArgumentException.class, () -> compass.rotate(facing, turn));
 
 
     }
