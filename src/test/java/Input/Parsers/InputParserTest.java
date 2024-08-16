@@ -1,6 +1,5 @@
 package Input.Parsers;
 
-import Data.Plateau;
 import Input.Direction;
 import Input.Instruction;
 import Input.Position;
@@ -19,7 +18,7 @@ class InputParserTest {
         int expectedOutcome1 = 10;
 
         //Act
-        var result1 = InputParser.parsePlateauSize(input1);
+        var result1 = InputParser.parsePlateau(input1);
 
         //Assert
         assertEquals(expectedOutcome1, result1.getHeight());
@@ -38,11 +37,11 @@ class InputParserTest {
         var expectedOutcome = IllegalArgumentException.class;
 
         //Act & Assert
-        assertThrows(expectedOutcome, () -> InputParser.parsePlateauSize(oneNumberOnly));
-        assertThrows(expectedOutcome, () -> InputParser.parsePlateauSize(emptyString));
-        assertThrows(expectedOutcome, () -> InputParser.parsePlateauSize(nullString));
-        assertThrows(expectedOutcome, () -> InputParser.parsePlateauSize(tooLong));
-        assertThrows(expectedOutcome, () -> InputParser.parsePlateauSize(incorrectFormat));
+        assertThrows(expectedOutcome, () -> InputParser.parsePlateau(oneNumberOnly));
+        assertThrows(expectedOutcome, () -> InputParser.parsePlateau(emptyString));
+        assertThrows(expectedOutcome, () -> InputParser.parsePlateau(nullString));
+        assertThrows(expectedOutcome, () -> InputParser.parsePlateau(tooLong));
+        assertThrows(expectedOutcome, () -> InputParser.parsePlateau(incorrectFormat));
 
     }
 
@@ -53,7 +52,7 @@ class InputParserTest {
         String input = "1 1";
 
         //Act & Assert
-        assertThrows(IllegalArgumentException.class, () -> InputParser.parsePlateauSize(input));
+        assertThrows(IllegalArgumentException.class, () -> InputParser.parsePlateau(input));
 
     }
 

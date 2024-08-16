@@ -34,4 +34,9 @@ public class Position {
     public void setFacing(Direction facing) {
         this.facing = facing;
     }
+
+    @Override
+    public String toString() {
+        return "Position X of rover is: " + getX() + ", and position Y is: " + getY() + ". Rover is facing direction: " + getFacing();
+    }
 }
