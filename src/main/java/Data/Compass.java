@@ -8,6 +8,14 @@ public class Compass {
 
     public static Direction rotate (Direction facing, Instruction turn) {
 
+        if (facing == null) {
+            throw new IllegalArgumentException("Please provide valid Direction");
+        }
+
+        if (turn == Instruction.M || turn == null)
+            throw new IllegalArgumentException("Please enter valid Instruction.");
+
+
         if (facing == Direction.N){
             switch (turn) {
                 case L:
