@@ -69,9 +69,15 @@ public class Rover {
         // if it is empty, the position will be updated.
 
         for (Instruction instruction : instructions) {
+
+            // Rotating rover
+
             if (instruction != Instruction.M) {
                 this.position.setFacing(compass.rotate(this.position.getFacing(), instruction));
             } else {
+
+                // Movement when facing North
+
                 if (this.position.getFacing() == Direction.N) {
                     if (Plateau.getInstance().isPositionEmpty(this.position.getX() -1, this.position.getY()))
                     {
@@ -79,10 +85,21 @@ public class Rover {
                         Plateau.getInstance().getPlateau()[this.position.getX()-1][this.position.getY()] = rover_ID;
                         this.position.setX(position.getX()-1);
                     } else {
-                        System.out.println("Position on your route is already occupied!");
-                        throw new IllegalArgumentException("No sorry, no.");
+                        throw new IllegalArgumentException("Position on your route is already occupied by another rover.");
                     }
+
+                // Movement when facing West
+
                 } else if (this.position.getFacing() == Direction.W) {
+
+                    if (Plateau.getInstance().isPositionEmpty(this.position.getX(), this.position.getY() - 1))
+                    {
+                        Plateau.getInstance().getPlateau()[this.position.getX()][this.position.getY()] = 0;
+                        Plateau.getInstance().getPlateau()[this.position.getX()][this.position.getY() - 1] = rover_ID;
+                        this.position.setY(position.getY()-1);
+                    } else {
+                        throw new IllegalArgumentException("Position on your route is already occupied by another rover.");
+                    }
 
                 } else if (this.position.getFacing() == Direction.S) {
 

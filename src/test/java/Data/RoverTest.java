@@ -38,7 +38,7 @@ class RoverTest {
 
         Rover rover1 = new Rover(new Position(4,4, Direction.N), 1);
 
-        Instruction[] movingNorth = {Instruction.M, Instruction.M, Instruction.M, Instruction.M};
+        Instruction[] movingNorth = {Instruction.M};
 
         for (int [] array : Plateau.getInstance().getPlateau()) {
             System.out.println(Arrays.toString(array));
@@ -47,15 +47,25 @@ class RoverTest {
         System.out.println("-------------------");
 
         rover1.move(movingNorth);
+        assertEquals(1, Plateau.getInstance().getPlateau()[3][4]);
 
         for (int [] array : Plateau.getInstance().getPlateau()) {
             System.out.println(Arrays.toString(array));
         }
+
+        rover1.move(movingNorth);
+        assertEquals(1, Plateau.getInstance().getPlateau()[2][4]);
+
+        rover1.move(movingNorth);
+        assertEquals(1, Plateau.getInstance().getPlateau()[1][4]);
+
+        rover1.move(movingNorth);
+        assertEquals(1, Plateau.getInstance().getPlateau()[0][4]);
     }
 
     @Test
     @Description("Method will test if the position is being updated accurately when going out of boundary")
-    void move_to_far_when_moving_North() {
+    void move_too_far_when_facing_North() {
 
         Plateau.getInstance(5, 5);
 
@@ -75,6 +85,55 @@ class RoverTest {
         }
 
         assertThrows(IllegalArgumentException.class, () -> rover1.move(movingTooFarNorth));
+    }
+
+    @Test
+    @Description("Method will test if the app is throwing an error when moving out of boundary")
+    void move_facing_West() {
+
+        Plateau.getInstance(5, 5);
+
+        Rover rover1 = new Rover(new Position(2,2, Direction.W), 1);
+
+        Instruction[] movingWest = {Instruction.M};
+
+        for (int [] array : Plateau.getInstance().getPlateau()) {
+            System.out.println(Arrays.toString(array));
+        }
+
+        System.out.println("-------------------");
+
+        rover1.move(movingWest);
+
+        for (int [] array : Plateau.getInstance().getPlateau()) {
+            System.out.println(Arrays.toString(array));
+        }
+
+        assertEquals(1, Plateau.getInstance().getPlateau()[2][1]);
+    }
+
+    @Test
+    @Description("Method will test if the position is being updated accurately when going out of boundary")
+    void move_too_far_when_facing_West() {
+
+        Plateau.getInstance(5, 5);
+
+        Rover rover1 = new Rover(new Position(2,2, Direction.N), 1);
+
+        Instruction[] movingTooFarWest = {Instruction.M, Instruction.M, Instruction.M};
+
+        for (int [] array : Plateau.getInstance().getPlateau()) {
+            System.out.println(Arrays.toString(array));
+        }
+
+        System.out.println("-------------------");
+
+
+        for (int [] array : Plateau.getInstance().getPlateau()) {
+            System.out.println(Arrays.toString(array));
+        }
+
+        assertThrows(IllegalArgumentException.class, () -> rover1.move(movingTooFarWest));
     }
 
 }
