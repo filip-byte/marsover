@@ -1,5 +1,7 @@
 import Data.Plateau;
+import Data.Rover;
 import Input.Direction;
+import Input.Instruction;
 import Input.Position;
 import Logic.MissionControl;
 
@@ -11,51 +13,22 @@ public class Main {
 
         Plateau plateau = Plateau.getInstance(11,11);
 
-        int[][] rover1Position = plateau.getPlateau();
-
-        int [] rover1 = new int[]{2,2};
-
-        for (int i = 0; i < 2; i++) {
-            rover1Position [rover1[0]][rover1[1]] = 1;
-        }
+        Rover rover1 = new Rover(new Position(5, 5, Direction.N) , 1);
+        Rover rover2 = new Rover(new Position(3, 8, Direction.W) , 2);
 
         for (int[] array : plateau.getPlateau()) {
             System.out.println(Arrays.toString(array));
         }
 
-        System.out.println("------------------");
+        System.out.println("---------------------------");
 
-        for (int i = 0; i < plateau.getWidth(); i++) {
-            for (int j = 0; j < plateau.getHeight(); j++) {
-                if (plateau.getPlateau()[i][j] == 1) {
-                    System.out.println("Position x of the rover_ONE is: " + i + ", and position y is: " + j);
-                }
-            }
-
-        }
-
-        int[][] rover2Position = plateau.getPlateau();
-
-        int [] rover2 = new int[]{3,3};
-
-        for (int i = 0; i < 2; i++) {
-            rover2Position [rover2[0]][rover2[1]] = 2;
-        }
-
-        System.out.println("------------------");
+        rover1.move(new Instruction[]{Instruction.M,Instruction.M, Instruction.M, Instruction.M, Instruction.M});
+        rover2.move(new Instruction[]{Instruction.M,Instruction.M, Instruction.M, Instruction.M, Instruction.M, Instruction.M, Instruction.M, Instruction.M});
 
         for (int[] array : plateau.getPlateau()) {
             System.out.println(Arrays.toString(array));
         }
 
-        for (int i = 0; i < plateau.getWidth(); i++) {
-            for (int j = 0; j < plateau.getHeight(); j++) {
-                if (plateau.getPlateau()[i][j] == 2) {
-                    System.out.println("Position x of the rover_TWO is: " + i + ", and position y is: " + j);
-                }
-            }
-
-        }
 
 
 

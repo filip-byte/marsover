@@ -88,7 +88,7 @@ class RoverTest {
     }
 
     @Test
-    @Description("Method will test if the app is throwing an error when moving out of boundary")
+    @Description("Method will test if position is being updated when moving one position to the West")
     void move_facing_West() {
 
         Plateau.getInstance(5, 5);
@@ -134,6 +134,31 @@ class RoverTest {
         }
 
         assertThrows(IllegalArgumentException.class, () -> rover1.move(movingTooFarWest));
+    }
+
+    @Test
+    @Description("Method will test if position is being updated when moving South by one instruction")
+    void move_facing_South() {
+
+        Plateau.getInstance(5, 5);
+
+        Rover rover1 = new Rover(new Position(2,2, Direction.S), 1);
+
+        Instruction[] movingSouth = {Instruction.M};
+
+        for (int [] array : Plateau.getInstance().getPlateau()) {
+            System.out.println(Arrays.toString(array));
+        }
+
+        System.out.println("-------------------");
+
+        rover1.move(movingSouth);
+
+        for (int [] array : Plateau.getInstance().getPlateau()) {
+            System.out.println(Arrays.toString(array));
+        }
+
+        assertEquals(1, Plateau.getInstance().getPlateau()[3][2]);
     }
 
 }

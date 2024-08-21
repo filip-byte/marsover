@@ -101,7 +101,20 @@ public class Rover {
                         throw new IllegalArgumentException("Position on your route is already occupied by another rover.");
                     }
 
+                // Movement when facing South
+
                 } else if (this.position.getFacing() == Direction.S) {
+
+                    if (Plateau.getInstance().isPositionEmpty(this.position.getX() + 1, this.position.getY()))
+                    {
+                        Plateau.getInstance().getPlateau()[this.position.getX()][this.position.getY()] = 0;
+                        Plateau.getInstance().getPlateau()[this.position.getX() + 1][this.position.getY()] = rover_ID;
+                        this.position.setX(position.getX() + 1);
+                    } else {
+                        throw new IllegalArgumentException("Position on your route is already occupied by another rover.");
+                    }
+
+                // Movement when facing East
 
                 } else if(this.position.getFacing() == Direction.E) {
 
