@@ -101,6 +101,15 @@ public class Rover {
 
                 } else if(this.position.getFacing() == Direction.E) {
 
+                    if (Plateau.getInstance().isPositionEmpty(this.position.getX(), this.position.getY() + 1 ))
+                    {
+                        Plateau.getInstance().getPlateau()[this.position.getX()][this.position.getY()] = 0;
+                        Plateau.getInstance().getPlateau()[this.position.getX()][this.position.getY() + 1 ] = rover_ID;
+                        this.position.setY(position.getY() + 1);
+                    } else {
+                        throw new IllegalArgumentException("Position on your route is already occupied by another rover.");
+                    }
+
                 }
 
 
