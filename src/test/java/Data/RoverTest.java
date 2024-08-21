@@ -183,4 +183,29 @@ class RoverTest {
         assertThrows(IllegalArgumentException.class, () -> rover1.move(movingTooFarSouth));
     }
 
+    @Test
+    @Description("Method will test if position is being updated when moving East by one instruction")
+    void move_facing_East() {
+
+        Plateau.getInstance(5, 5);
+
+        Rover rover1 = new Rover(new Position(2,2, Direction.E), 1);
+
+        Instruction[] movingEast = {Instruction.M};
+
+        for (int [] array : Plateau.getInstance().getPlateau()) {
+            System.out.println(Arrays.toString(array));
+        }
+
+        System.out.println("-------------------");
+
+        rover1.move(movingEast);
+
+        for (int [] array : Plateau.getInstance().getPlateau()) {
+            System.out.println(Arrays.toString(array));
+        }
+
+        assertEquals(1, Plateau.getInstance().getPlateau()[2][3]);
+    }
+
 }
