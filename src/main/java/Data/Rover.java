@@ -51,23 +51,6 @@ public class Rover {
 
     public void move (Instruction[] instructions) {
 
-        // this method provides a set of instructions
-        // it will have to handle each of the instructions one by one
-        // if instruction is L or R,
-        // it will take a compass and adjust facing position parameter accordingly
-        // if it is an M
-        // based on facing, it will want to move one field in that direction
-            // if N then we decrease the column parameter by one
-            // if S, then we increase the column parameter by one
-            // therefore
-            // if W then we increase the row parameter by one
-            // if E then we decrease the row parameter by one
-            //
-            // once we know the new location
-            // we check Plateau if the position is empty
-        // if it isn't empty it will throw an error
-        // if it is empty, the position will be updated.
-
         for (Instruction instruction : instructions) {
 
             // Rotating rover

@@ -79,7 +79,6 @@ class RoverTest {
 
         System.out.println("-------------------");
 
-
         for (int [] array : Plateau.getInstance().getPlateau()) {
             System.out.println(Arrays.toString(array));
         }
@@ -118,7 +117,7 @@ class RoverTest {
 
         Plateau.getInstance(5, 5);
 
-        Rover rover1 = new Rover(new Position(2,2, Direction.N), 1);
+        Rover rover1 = new Rover(new Position(2,2, Direction.W), 1);
 
         Instruction[] movingTooFarWest = {Instruction.M, Instruction.M, Instruction.M};
 
@@ -159,6 +158,29 @@ class RoverTest {
         }
 
         assertEquals(1, Plateau.getInstance().getPlateau()[3][2]);
+    }
+
+    @Test
+    @Description("Method will test if the error is thrown when rover tries to go out of boundary when facing South")
+    void move_too_far_when_facing_South() {
+
+        Plateau.getInstance(5, 5);
+
+        Rover rover1 = new Rover(new Position(2,2, Direction.S), 1);
+
+        Instruction[] movingTooFarSouth = {Instruction.M, Instruction.M, Instruction.M};
+
+        for (int [] array : Plateau.getInstance().getPlateau()) {
+            System.out.println(Arrays.toString(array));
+        }
+
+        System.out.println("-------------------");
+
+        for (int [] array : Plateau.getInstance().getPlateau()) {
+            System.out.println(Arrays.toString(array));
+        }
+
+        assertThrows(IllegalArgumentException.class, () -> rover1.move(movingTooFarSouth));
     }
 
 }

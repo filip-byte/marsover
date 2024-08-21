@@ -51,8 +51,20 @@ public class Plateau {
 
     public boolean isPositionEmpty (int row, int column) {
 
-        if (row < 0 || column < 0) {
-            throw new IllegalArgumentException("You have been sucked into a wormhole. GAME OVER.");
+        if (row < 0 ) {
+            throw new IllegalArgumentException("Player got sucked by a Wormhole of the North");
+        }
+
+        if (column < 0 ) {
+            throw new IllegalArgumentException("Player got sucked by a Wormhole of the West");
+        }
+
+        if (row >= getHeight() ) {
+            throw new IllegalArgumentException("Player got sucked by a Wormhole of the South");
+        }
+
+        if (row >= getHeight() ) {
+            throw new IllegalArgumentException("Player got sucked by a Wormhole of the East");
         }
 
         return getPlateau()[row][column] == 0;
